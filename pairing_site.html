@@ -1,0 +1,2202 @@
+<!doctype html>
+<html lang="ja" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAKE CRAFTERS | 一杯の向こうに、つくる人がいる</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat (for geometric uppercase) & Shippori Mincho (for premium serif) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Shippori+Mincho:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              serif: ['Shippori Mincho', 'serif'],
+            },
+            colors: {
+              brand: {
+                white: '#ffffff',
+                black: '#000000',
+                gray: '#1c1c1c',
+                lightGray: '#f5f5f7',
+                border: '#e5e5e7',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Modern Minimalist Animations */
+      @keyframes subtle-fade {
+        0% {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: subtle-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes ripple {
+        0% {
+          transform: scale(0.95);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.1);
+          opacity: 0;
+        }
+      }
+      .ripple-effect {
+        animation: ripple 1.8s infinite ease-out;
+      }
+
+      /* Custom print media optimization for Table Tent */
+      @media print {
+        body {
+          background: white !important;
+          color: black !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        #print-flyer-area {
+          display: block !important;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: white !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white text-brand-black font-sans min-h-full flex flex-col selection:bg-brand-black selection:text-white"
+  >
+    <!-- Header -->
+    <header
+      class="border-b border-brand-black/10 bg-white/95 backdrop-blur sticky top-0 z-50 transition-colors"
+    >
+      <div
+        class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <!-- Brand Logo and Name -->
+        <div class="flex items-center space-x-3.5">
+          <img
+            src="imgs/sake-logo.svg"
+            alt="SAKE CRAFTERS"
+            style="width: 40px"
+          />
+          <div>
+            <!-- Geometric Font with Tracking based on Uploaded Image 2 -->
+            <h1
+              class="text-xl md:text-2xl font-bold tracking-[0.25em] text-brand-black font-sans leading-none"
+            >
+              SAKE CRAFTERS
+            </h1>
+            <p
+              class="text-[8px] text-brand-black/60 tracking-[0.18em] font-sans uppercase mt-1"
+              id="sub-logo-text"
+            >
+              一杯の向こうに、つくる人がいる
+            </p>
+          </div>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <select
+              id="lang-select"
+              onchange="changeLanguage(this.value)"
+              class="appearance-none bg-brand-lightGray border border-brand-black/10 hover:border-brand-black text-[11px] font-bold py-1.5 pl-3 pr-8 rounded-lg cursor-pointer transition focus:outline-none focus:ring-1 focus:ring-brand-black"
+            >
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="it">Italiano</option>
+              <option value="de">Deutsch</option>
+              <option value="nl">Nederlands</option>
+            </select>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-brand-black/60"
+            >
+              <i class="fa-solid fa-globe text-[10px]"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main
+      class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 flex flex-col justify-center"
+    >
+      <!-- ================= HOME SCREEN ================= -->
+      <section id="home-screen" class="space-y-10 animate-fade-in">
+        <div class="text-center space-y-4 max-w-2xl mx-auto">
+          <span
+            class="inline-block px-3 py-1 text-[9px] font-bold tracking-[0.15em] text-brand-black bg-brand-lightGray rounded-md uppercase border border-brand-black/10"
+            id="tagline-badge"
+          >
+            Kakuuchi standing bar & shop
+          </span>
+          <h2
+            class="text-3xl md:text-5xl font-serif text-brand-black leading-tight"
+            id="hero-title"
+          >
+            一杯の向こうに、<br />つくる人がいる。<br />
+            <span
+              class="text-2xl md:text-3xl font-bold underline decoration-brand-black/20"
+              id="hero-subtitle"
+              style="font-size: 1.1rem"
+              >厳選した酒とつまみを角打ちで楽しむ
+            </span>
+          </h2>
+          <p
+            class="text-brand-black/60 text-xs md:text-sm leading-relaxed max-w-lg mx-auto"
+            id="hero-desc"
+          >
+            伝統とモダンが交差する酒屋。自社ブランド「椿・藤・萩」を筆頭に、全国の銘酒を最高のつまみと共にご提供いたします。
+          </p>
+        </div>
+
+        <!-- Focus Section: Highlight Tsubaki, Fuji, Hagi -->
+        <div
+          class="max-w-3xl mx-auto bg-brand-lightGray border border-brand-black/5 p-6 rounded-2xl space-y-4"
+        >
+          <div
+            class="text-center md:text-left flex flex-col md:flex-row items-center justify-between border-b border-brand-black/5 pb-3"
+          >
+            <h4
+              class="font-serif font-bold text-lg text-brand-black tracking-wide flex items-center gap-2"
+            >
+              <span>🌸</span>
+              <span id="crafted-title">CRAFTERS SIGNATURE BREW / 自社醸造</span>
+            </h4>
+            <span
+              class="text-[10px] uppercase font-bold text-brand-black/40 tracking-wider"
+              id="crafted-badge"
+              >Our Pride & Joy</span
+            >
+          </div>
+          <div class="grid md:grid-cols-3 gap-4 text-left">
+            <div
+              class="bg-white p-4 rounded-xl border border-brand-black/5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-serif font-bold text-base text-brand-black"
+                    >椿 — TSUBAKI</span
+                  >
+                  <span class="text-xs font-sans font-bold">880円</span>
+                </div>
+                <span
+                  class="inline-block bg-brand-black text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider mb-2"
+                  id="tsubaki-label"
+                  >純米大吟醸</span
+                >
+                <p
+                  class="text-[11px] text-brand-black/60 leading-relaxed"
+                  id="tsubaki-desc"
+                >
+                  凛とした気品のある香り、瑞々しい透明感に満ちたプレミアム酒。
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-white p-4 rounded-xl border border-brand-black/5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-serif font-bold text-base text-brand-black"
+                    >藤 — FUJI</span
+                  >
+                  <span class="text-xs font-sans font-bold">750円</span>
+                </div>
+                <span
+                  class="inline-block bg-brand-black/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider mb-2"
+                  id="fuji-label"
+                  >純米吟醸</span
+                >
+                <p
+                  class="text-[11px] text-brand-black/60 leading-relaxed"
+                  id="fuji-desc"
+                >
+                  最もドライで切れ味鋭く、ガツンと力強いパンチのある極辛口純米吟醸。
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-white p-4 rounded-xl border border-brand-black/5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-serif font-bold text-base text-brand-black"
+                    >萩 — HAGI</span
+                  >
+                  <span class="text-xs font-sans font-bold">650円</span>
+                </div>
+                <span
+                  class="inline-block bg-brand-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider mb-2"
+                  id="hagi-label"
+                  >純米酒</span
+                >
+                <p
+                  class="text-[11px] text-brand-black/60 leading-relaxed"
+                  id="hagi-desc"
+                >
+                  お米本来のふくよかな旨みとコク。揚げ物やソース料理を最も受け止める、当店の売れ筋No.1。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Selection Grid -->
+        <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <!-- Mode A: Quick Diagnostic -->
+          <button
+            onclick="startQuickDiagnostic()"
+            class="group text-left p-6 rounded-2xl bg-white border border-brand-black hover:bg-brand-lightGray transition-all duration-300 flex flex-col justify-between h-56 relative overflow-hidden"
+          >
+            <div
+              class="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300 transform translate-x-4 translate-y-4 text-brand-black"
+            >
+              <i class="fa-solid fa-list-check text-9xl"></i>
+            </div>
+            <div class="space-y-2.5 z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-brand-black text-white flex items-center justify-center"
+              >
+                <i class="fa-solid fa-bolt text-lg"></i>
+              </div>
+              <h3
+                class="text-lg font-bold text-brand-black font-serif"
+                id="btn-quick-title"
+              >
+                3秒で即決！今日のペアリング診断
+              </h3>
+              <p
+                class="text-brand-black/60 text-[11px] leading-relaxed"
+                id="btn-quick-desc"
+              >
+                今の気分やお好みの組み合わせパターンをもとに、あなたが今すぐに飲むべき至福の1杯と最高に合う自慢のつまみをご提案。
+              </p>
+            </div>
+            <span
+              class="text-xs font-bold text-brand-black flex items-center gap-2 group-hover:translate-x-2 transition-transform z-10"
+              id="btn-quick-action"
+            >
+              診断をはじめる <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </button>
+
+          <!-- Mode B: AI Sommelier Diagnostic -->
+          <button
+            onclick="startAiDiagnostic()"
+            class="group text-left p-6 rounded-2xl bg-white border border-brand-black/20 hover:border-brand-black hover:bg-brand-lightGray transition-all duration-300 flex flex-col justify-between h-56 relative overflow-hidden"
+          >
+            <div
+              class="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300 transform translate-x-4 translate-y-4 text-brand-black"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles text-9xl"></i>
+            </div>
+            <div class="space-y-2.5 z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-brand-lightGray border border-brand-black/10 text-brand-black flex items-center justify-center"
+              >
+                <i class="fa-solid fa-robot text-lg"></i>
+              </div>
+              <h3
+                class="text-lg font-bold text-brand-black font-serif"
+                id="btn-ai-title"
+              >
+                AI利酒師におまかせ診断
+              </h3>
+              <p
+                class="text-brand-black/60 text-[11px] leading-relaxed"
+                id="btn-ai-desc"
+              >
+                「とにかく今日は元気がほしい」「バナナやお米の芳醇な香りを楽しみたい」など、今のあなたの気分をそのまま自由に入力してください。
+              </p>
+            </div>
+            <span
+              class="text-xs font-bold text-brand-black/80 flex items-center gap-2 group-hover:translate-x-2 transition-transform z-10"
+              id="btn-ai-action"
+            >
+              自由に相談する <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= QUICK DIAGNOSTIC SCREEN ================= -->
+      <section
+        id="quick-diagnostic-screen"
+        class="hidden max-w-xl mx-auto w-full space-y-6"
+      >
+        <!-- Progress Bar -->
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs text-brand-black/60">
+            <span id="question-step-text">質問 1 / 3</span>
+            <span id="question-progress-percent">33%</span>
+          </div>
+          <div class="h-1.5 bg-brand-lightGray rounded-full overflow-hidden">
+            <div
+              id="question-progress-bar"
+              class="h-full bg-brand-black transition-all duration-300"
+              style="width: 33%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div
+          id="question-card"
+          class="bg-white border border-brand-black p-8 rounded-2xl shadow-sm space-y-6"
+        >
+          <h3
+            id="question-title"
+            class="text-xl md:text-2xl font-serif text-brand-black text-center leading-snug"
+          >
+            質問を読み込み中...
+          </h3>
+
+          <!-- Answer Choices -->
+          <div id="question-choices" class="space-y-3 pt-2">
+            <!-- Choices Injected Dynamically -->
+          </div>
+        </div>
+
+        <!-- Back navigation button -->
+        <div class="flex justify-center">
+          <button
+            onclick="goToHome()"
+            class="text-brand-black/60 hover:text-brand-black text-xs flex items-center gap-2 px-4 py-2 transition"
+            id="back-home-btn1"
+          >
+            <i class="fa-solid fa-house"></i> トップに戻る
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= AI SOMMELIER DIAGNOSTIC SCREEN ================= -->
+      <section
+        id="ai-diagnostic-screen"
+        class="hidden max-w-xl mx-auto w-full space-y-6"
+      >
+        <div
+          class="bg-white border border-brand-black p-8 rounded-2xl shadow-sm space-y-6"
+        >
+          <div class="text-center space-y-2">
+            <div
+              class="w-12 h-12 rounded-full bg-brand-lightGray flex items-center justify-center text-brand-black mx-auto text-lg"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3
+              class="text-xl font-serif text-brand-black font-bold"
+              id="ai-kikisake-title"
+            >
+              AI利酒師におまかせ
+            </h3>
+            <p
+              class="text-brand-black/60 text-xs leading-relaxed max-w-xs mx-auto"
+              id="ai-kikisake-desc"
+            >
+              体調、気分、挑戦したいお好みの味をお聞かせください。自慢の「椿・藤・萩」や、厳選銘酒から究極の1杯＆1皿をご提案します。
+            </p>
+          </div>
+
+          <!-- Input area -->
+          <div class="space-y-4">
+            <div class="relative">
+              <textarea
+                id="ai-input"
+                rows="4"
+                class="w-full bg-brand-lightGray border border-brand-black/10 focus:border-brand-black rounded-xl p-4 text-sm text-brand-black placeholder-brand-black/40 focus:outline-none focus:ring-1 focus:ring-brand-black transition resize-none"
+                placeholder="例：仕事帰りのご褒美に、上品で華やかな自社の「椿（純米大吟醸）」と、サクサクのジューシー唐揚げを合わせたい！"
+              ></textarea>
+              <div
+                class="absolute right-3 bottom-3 text-[8px] text-brand-black/40 font-bold uppercase tracking-wider"
+              >
+                Realtime AI
+              </div>
+            </div>
+
+            <!-- Suggestions Tags -->
+            <div class="space-y-1.5">
+              <span
+                class="text-[9px] text-brand-black/40 uppercase tracking-widest block font-bold"
+                id="ai-hint-title"
+                >入力のヒント（タップで挿入）</span
+              >
+              <div class="flex flex-wrap gap-2">
+                <button
+                  onclick="
+                    insertHint(
+                      '自社最高峰の「椿（純米大吟醸）」に、さっぱりジューシーな唐揚げを合わせて、気高いペアリングを楽しみたい'
+                    )
+                  "
+                  class="px-2.5 py-1 rounded-lg bg-brand-lightGray hover:bg-brand-black hover:text-white border border-brand-black/5 text-[11px] text-brand-black transition-colors"
+                >
+                  🌸 椿 × 唐揚げ
+                </button>
+                <button
+                  onclick="
+                    insertHint(
+                      'お米の香りが豊かな「萩（純米酒）」を、名物の谷中メンチカツでがっつり流し込みたい'
+                    )
+                  "
+                  class="px-2.5 py-1 rounded-lg bg-brand-lightGray hover:bg-brand-black hover:text-white border border-brand-black/5 text-[11px] text-brand-black transition-colors"
+                >
+                  🌾 萩 × メンチカツ
+                </button>
+                <button
+                  onclick="
+                    insertHint(
+                      'とにかく色々な銘柄を一度に味わってみたい！日本酒3種の飲み比べに最適なアツアツ揚げ物'
+                    )
+                  "
+                  class="px-2.5 py-1 rounded-lg bg-brand-lightGray hover:bg-brand-black hover:text-white border border-brand-black/5 text-[11px] text-brand-black transition-colors"
+                >
+                  🍶 飲み比べ × 揚げ物
+                </button>
+                <button
+                  onclick="
+                    insertHint(
+                      '冒険したい気分！バナナ酵母の日本酒と、ピリ辛で温まるHOTメキシカン唐揚げ丼のマリアージュ'
+                    )
+                  "
+                  class="px-2.5 py-1 rounded-lg bg-brand-lightGray hover:bg-brand-black hover:text-white border border-brand-black/5 text-[11px] text-brand-black transition-colors"
+                >
+                  🌶️ 恋するバナナ × メキシカン丼
+                </button>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              onclick="runAiDiagnostic()"
+              class="w-full py-3.5 bg-brand-black hover:bg-brand-gray text-white font-bold rounded-xl shadow transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
+              id="ai-submit-btn"
+            >
+              <span>AI利酒師に相談する</span>
+              <i class="fa-solid fa-sparkles"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Back navigation button -->
+        <div class="flex justify-center">
+          <button
+            onclick="goToHome()"
+            class="text-brand-black/60 hover:text-brand-black text-xs flex items-center gap-2 px-4 py-2 transition"
+            id="back-home-btn2"
+          >
+            <i class="fa-solid fa-arrow-left"></i> トップに戻る
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= LOADING SCREEN ================= -->
+      <section
+        id="loading-screen"
+        class="hidden max-w-md mx-auto w-full text-center py-12 space-y-8 animate-fade-in"
+      >
+        <div
+          class="relative w-32 h-32 mx-auto flex items-center justify-center"
+        >
+          <!-- Outer minimal pulses -->
+          <div
+            class="absolute inset-0 rounded-full border border-brand-black/10 ripple-effect"
+          ></div>
+          <div
+            class="absolute inset-2 rounded-full border border-brand-black/20 ripple-effect"
+            style="animation-delay: 0.6s"
+          ></div>
+
+          <!-- Inner minimalist vessel icon -->
+          <div
+            class="w-16 h-16 rounded-full bg-brand-lightGray border border-brand-black flex items-center justify-center relative overflow-hidden shadow-sm"
+          >
+            <span class="text-2xl z-10">🍶</span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h3
+            class="text-lg font-serif text-brand-black tracking-widest font-bold"
+            id="loading-text"
+          >
+            利酒師が相性を吟味しています...
+          </h3>
+          <p
+            class="text-[11px] text-brand-black/40 max-w-xs mx-auto leading-relaxed"
+            id="loading-subtext"
+          >
+            お酒の繊細な風味と、揚げたてつまみの温度・味わいのシンクロ率を計算しています。
+          </p>
+        </div>
+      </section>
+
+      <!-- ================= DIAGNOSTIC RESULT SCREEN ================= -->
+      <section
+        id="result-screen"
+        class="hidden max-w-2xl mx-auto w-full space-y-6"
+      >
+        <!-- Master Card Wrapper -->
+        <div
+          class="bg-white border border-brand-black rounded-3xl overflow-hidden shadow-sm relative"
+        >
+          <!-- Top Header -->
+          <div
+            class="bg-brand-lightGray px-6 py-5 border-b border-brand-black/10 text-center space-y-1"
+          >
+            <span
+              class="text-[9px] tracking-widest text-brand-black/50 font-bold uppercase"
+              id="res-header-tag"
+              >SAKE CRAFTERS RECOMMENDED PAIRING</span
+            >
+            <h3
+              id="res-pairing-name"
+              class="text-xl md:text-2xl font-serif text-brand-black font-bold"
+            >
+              椿（純米大吟醸） ＆ チキン唐揚げ
+            </h3>
+          </div>
+
+          <!-- Main Result Content -->
+          <div class="p-6 md:p-8 space-y-8">
+            <!-- Grid: Food and Drink Details -->
+            <div class="grid md:grid-cols-2 gap-6 items-stretch">
+              <!-- Left Side: SAKE Card -->
+              <div
+                class="bg-brand-lightGray/40 border border-brand-black/10 p-5 rounded-2xl flex flex-col justify-between space-y-4"
+              >
+                <div>
+                  <span
+                    class="inline-block px-2 py-0.5 text-[9px] text-brand-black bg-brand-black text-white rounded font-bold tracking-wider mb-2"
+                    id="res-drink-badge"
+                  >
+                    🍶 SELECTED DRINK
+                  </span>
+                  <h4
+                    id="res-sake-name"
+                    class="text-lg font-serif text-brand-black font-bold tracking-wide"
+                  >
+                    椿（純米大吟醸）
+                  </h4>
+                  <p
+                    id="res-sake-spec"
+                    class="text-xs text-brand-black/60 mt-1.5 leading-relaxed"
+                  >
+                    清らかで品のある美しい透明感に満ちたプレミアム酒。
+                  </p>
+                </div>
+                <div
+                  class="pt-2 border-t border-brand-black/5 text-xs space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <span class="text-brand-black/40" id="res-label-style"
+                      >提供スタイル</span
+                    >
+                    <span id="res-sake-temp" class="text-brand-black font-bold"
+                      >すっきり冷酒</span
+                    >
+                  </div>
+                  <div
+                    class="flex justify-between border-t border-brand-black/5 pt-1 mt-1"
+                  >
+                    <span class="text-brand-black/40" id="res-label-sakeprice"
+                      >単品価格</span
+                    >
+                    <span
+                      id="res-sake-price-badge"
+                      class="text-brand-black font-bold"
+                      >880円</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Side: FOOD Card -->
+              <div
+                class="bg-brand-lightGray/40 border border-brand-black/10 p-5 rounded-2xl flex flex-col justify-between space-y-4"
+              >
+                <div>
+                  <span
+                    class="inline-block px-2 py-0.5 text-[9px] text-brand-black bg-brand-lightGray border border-brand-black/10 rounded font-bold tracking-wider mb-2"
+                    id="res-food-badge"
+                  >
+                    🍛 SELECTED FOOD
+                  </span>
+                  <h4
+                    id="res-food-name"
+                    class="text-lg font-serif text-brand-black font-bold tracking-wide"
+                  >
+                    谷中銀座のチキン唐揚げ
+                  </h4>
+                  <p
+                    id="res-food-spec"
+                    class="text-xs text-brand-black/60 mt-1.5 leading-relaxed"
+                  >
+                    サクサクジューシーに揚げた、肉厚で香ばしいチキン。
+                  </p>
+                </div>
+                <div
+                  class="pt-2 border-t border-brand-black/5 text-xs space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <span class="text-brand-black/40" id="res-label-genre"
+                      >味わいジャンル</span
+                    >
+                    <span id="res-food-type" class="text-brand-black font-bold"
+                      >ジューシー揚げ物</span
+                    >
+                  </div>
+                  <div
+                    class="flex justify-between border-t border-brand-black/5 pt-1 mt-1"
+                  >
+                    <span class="text-brand-black/40" id="res-label-foodprice"
+                      >単品通常価格</span
+                    >
+                    <span
+                      id="res-food-price-badge"
+                      class="text-brand-black font-bold"
+                      >450円</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Synergy Formula Box -->
+            <div
+              class="bg-brand-lightGray border border-brand-black/10 rounded-xl p-4 text-center"
+            >
+              <div
+                class="text-[9px] uppercase tracking-widest text-brand-black/40 mb-1.5 font-bold"
+                id="res-label-formula"
+              >
+                マリアージュの調和方程式
+              </div>
+              <p
+                id="res-synergy"
+                class="text-sm md:text-base font-serif text-brand-black italic font-bold"
+              >
+                大吟醸の上品な香り × 揚げたてのジューシー旨味 ＝
+                忘れられない余韻
+              </p>
+            </div>
+
+            <!-- Sommelier's Explanation -->
+            <div class="space-y-3">
+              <h5
+                class="text-xs font-bold text-brand-black/40 uppercase tracking-widest flex items-center gap-2"
+                id="res-label-commentary"
+              >
+                <i class="fa-solid fa-comment-dots"></i> 利酒師からの解説
+              </h5>
+              <p
+                id="res-description"
+                class="text-brand-black/80 text-sm leading-relaxed border-l border-brand-black pl-4 font-serif"
+              >
+                「椿」のもつ気品に溢れた瑞々しいフルーツ香と、ジューシーな唐揚げの豊かな旨味が絶妙な調和をもたらします。唐揚げの香ばしい衣とジューシーな肉汁の余韻を、椿の澄み渡る酸がきれいに包み込み、引き立ててくれます。
+              </p>
+            </div>
+
+            <!-- Dynamic Order Box (Calculated) -->
+            <div
+              class="p-5 rounded-2xl bg-brand-lightGray border border-brand-black/10 flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+              <div class="space-y-1 text-center md:text-left">
+                <div
+                  class="flex items-baseline justify-center md:justify-start gap-1"
+                >
+                  <span class="text-xs text-brand-black/50" id="res-label-sum"
+                    >ペアリング合計価格:</span
+                  >
+                  <span
+                    id="res-price"
+                    class="text-2xl font-serif text-brand-black font-bold"
+                    >1,330円</span
+                  >
+                  <span class="text-xs text-brand-black/60" id="res-label-tax"
+                    >(税込)</span
+                  >
+                </div>
+                <p class="text-[9px] text-brand-black/40" id="res-label-notice">
+                  ※セット値引きはございません。単品価格の合算となります。
+                </p>
+              </div>
+              <button
+                onclick="showOrderConfirmation()"
+                class="w-full md:w-auto px-6 py-3.5 bg-brand-black hover:bg-brand-gray text-white font-bold rounded-xl text-xs tracking-wider flex items-center justify-center gap-2 transition-colors shadow"
+              >
+                <i class="fa-solid fa-bell"></i>
+                <span id="res-btn-order">これに決定（画面を店員に提示）</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back Actions -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+        >
+          <button
+            onclick="goToHome()"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-lightGray border border-brand-black/10 hover:border-brand-black text-brand-black text-xs font-bold flex items-center justify-center gap-2 transition"
+            id="res-btn-retry"
+          >
+            <i class="fa-solid fa-arrow-rotate-left"></i> もう一度診断する
+          </button>
+          <button
+            onclick="copyToClipboard()"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-lightGray border border-brand-black/10 hover:border-brand-black text-brand-black text-xs font-bold flex items-center justify-center gap-2 transition"
+            id="res-btn-copy"
+          >
+            <i class="fa-solid fa-copy"></i> 結果をコピーする
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= ORDER MODAL ================= -->
+      <div
+        id="order-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-brand-black/60 backdrop-blur-sm p-4"
+      >
+        <div
+          class="bg-white border border-brand-black rounded-2xl p-6 max-w-sm w-full text-center space-y-6 shadow-2xl relative animate-fade-in"
+        >
+          <button
+            onclick="hideOrderConfirmation()"
+            class="absolute top-4 right-4 text-brand-black/40 hover:text-brand-black"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <div
+            class="w-12 h-12 rounded-full bg-brand-lightGray flex items-center justify-center text-brand-black mx-auto text-lg"
+          >
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+
+          <div class="space-y-2">
+            <h4
+              class="text-base font-serif text-brand-black font-bold"
+              id="modal-title"
+            >
+              ご注文内容の確認
+            </h4>
+            <p class="text-[11px] text-brand-black/60" id="modal-desc">
+              この画面のままお近くのスタッフにお見せいただき、口頭にてオーダーをお願いします。
+            </p>
+          </div>
+
+          <!-- Ticket details visual -->
+          <div
+            class="p-4 rounded-xl bg-brand-lightGray border border-brand-black/10 text-left space-y-2.5 font-serif"
+          >
+            <div
+              class="text-[9px] uppercase font-sans tracking-[0.15em] text-brand-black font-bold text-center border-b border-brand-black/5 pb-2"
+            >
+              🌸 SAKE CRAFTERS PASS 🌸
+            </div>
+
+            <div class="space-y-1">
+              <div
+                class="text-[8px] text-brand-black/40 font-sans uppercase"
+                id="modal-label-drink"
+              >
+                お酒
+              </div>
+              <div class="flex justify-between items-center">
+                <span
+                  id="modal-sake-name"
+                  class="text-xs font-bold text-brand-black pl-2 border-l border-brand-black"
+                ></span>
+                <span
+                  id="modal-sake-price"
+                  class="text-xs text-brand-black/60 font-sans"
+                ></span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div
+                class="text-[8px] text-brand-black/40 font-sans uppercase"
+                id="modal-label-food"
+              >
+                つまみ
+              </div>
+              <div class="flex justify-between items-center">
+                <span
+                  id="modal-food-name"
+                  class="text-xs font-bold text-brand-black pl-2 border-l border-brand-black/60"
+                ></span>
+                <span
+                  id="modal-food-price"
+                  class="text-xs text-brand-black/60 font-sans"
+                ></span>
+              </div>
+            </div>
+
+            <div
+              class="border-t border-brand-black/5 my-2 pt-2 flex justify-between items-baseline font-sans"
+            >
+              <div class="text-xs text-brand-black/40" id="modal-label-total">
+                合計金額:
+              </div>
+              <div class="text-sm font-bold text-brand-black">
+                <span id="modal-final-total" class="text-base"></span>
+                <span class="text-[9px] text-brand-black/40 font-normal"
+                  >円 (税込)</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-[10px] text-brand-black/40 italic"
+            id="modal-footer-msg"
+          >
+            こだわりのお酒と一皿をすぐにお届けします。
+          </p>
+
+          <button
+            onclick="hideOrderConfirmation()"
+            class="w-full py-2.5 bg-brand-black hover:bg-brand-gray text-white font-bold rounded-xl text-xs tracking-wider transition"
+            id="modal-btn-close"
+          >
+            閉じる
+          </button>
+        </div>
+      </div>
+
+      <!-- STYLISH TOAST SYSTEM -->
+      <div
+        id="toast-notification"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-brand-black text-white px-6 py-3 rounded-xl shadow-lg flex items-center space-x-3 pointer-events-none opacity-0 transition-opacity duration-300"
+      >
+        <span id="toast-icon">
+          <i class="fa-solid fa-info-circle"></i>
+        </span>
+        <span class="text-xs font-semibold" id="toast-message">メッセージ</span>
+      </div>
+
+      <!-- ================= STAFF QR GENERATOR MODAL ================= -->
+      <div
+        id="staff-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-brand-black/60 backdrop-blur-sm p-4 no-print"
+      >
+        <div
+          class="bg-white border border-brand-black rounded-2xl p-6 max-w-lg w-full space-y-5 shadow-2xl relative"
+        >
+          <button
+            onclick="closeStaffModal()"
+            class="absolute top-4 right-4 text-brand-black/40 hover:text-brand-black"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <div class="space-y-1">
+            <h4
+              class="text-base font-serif text-brand-black font-bold flex items-center gap-2"
+            >
+              <i class="fa-solid fa-qrcode"></i> 店頭QRコード・卓上POPメーカー
+            </h4>
+            <p class="text-[11px] text-brand-black/60">
+              お席からQRコードでメニュー診断に即時アクセスできる、卓上POP（スタンドサイズ）を生成して印刷します。
+            </p>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="space-y-1.5">
+              <label class="block text-brand-black/80 font-bold"
+                >① アプリの公開先URL</label
+              >
+              <input
+                id="qr-input-url"
+                type="text"
+                class="w-full bg-brand-lightGray border border-brand-black/10 focus:border-brand-black rounded-xl p-3 text-brand-black focus:outline-none"
+                placeholder="https://sake-crafters.github.io/app/"
+              />
+              <p class="text-[9px] text-brand-black/40">
+                ※空欄の場合は自動的にこのテスト環境のURLを使用します
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="block text-brand-black/80 font-bold"
+                  >② テーブル番号 / 席名</label
+                >
+                <input
+                  id="qr-input-table"
+                  type="text"
+                  class="w-full bg-brand-lightGray border border-brand-black/10 focus:border-brand-black rounded-xl p-3 text-brand-black focus:outline-none"
+                  placeholder="例：カウンター席 A"
+                />
+              </div>
+              <div class="space-y-1.5">
+                <label class="block text-brand-black/80 font-bold"
+                  >③ 印刷用紙サイズ</label
+                >
+                <select
+                  id="qr-input-size"
+                  class="w-full bg-brand-lightGray border border-brand-black/10 focus:border-brand-black rounded-xl p-3 text-brand-black focus:outline-none"
+                >
+                  <option value="A6">卓上ハーフサイズ (A6推奨)</option>
+                  <option value="A4">通常サイズ (A4/A5)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Live Preview Box -->
+            <div
+              class="p-3 bg-brand-lightGray border border-brand-black/5 rounded-xl flex items-center gap-4"
+            >
+              <div
+                id="pop-preview-qr-container"
+                class="w-20 h-20 bg-white p-1 rounded-lg flex items-center justify-center border border-brand-black/10"
+              >
+                <img id="pop-preview-qr" src="" alt="QR" class="w-18 h-18" />
+              </div>
+              <div class="space-y-1">
+                <div class="font-bold text-brand-black text-xs font-serif">
+                  SAKE CRAFTERS POP PREVIEW
+                </div>
+                <p class="text-brand-black/50 text-[10px] leading-relaxed">
+                  入力内容がリアルタイムで反映されます。印刷時、デザインが縦型卓上スタンドサイズに合わせて出力されます。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-3 pt-2">
+            <button
+              onclick="closeStaffModal()"
+              class="w-1/2 py-3 bg-brand-lightGray hover:bg-brand-black hover:text-white border border-brand-black/10 rounded-xl text-xs font-bold transition"
+            >
+              キャンセル
+            </button>
+            <button
+              onclick="printFlyer()"
+              class="w-1/2 py-3 bg-brand-black hover:bg-brand-gray text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition shadow"
+            >
+              <i class="fa-solid fa-print"></i> POPを印刷する
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PRINT-ONLY TABLE FLYER (Hidden on screen) ================= -->
+      <div
+        id="print-flyer-area"
+        class="hidden p-8 max-w-sm mx-auto bg-white text-brand-black border-4 border-brand-black rounded-3xl font-serif text-center relative shadow-lg"
+      >
+        <!-- Header Ornament -->
+        <div
+          class="text-[10px] tracking-[0.2em] font-sans font-bold uppercase text-brand-black mb-2"
+        >
+          🌸 SAKE CRAFTERS 🌸
+        </div>
+
+        <div class="border-b border-brand-black/10 pb-4 mb-6">
+          <h1
+            class="text-2xl font-bold tracking-[0.25em] text-brand-black mb-1 font-sans uppercase"
+          >
+            SAKE CRAFTERS
+          </h1>
+          <p
+            class="text-[8px] font-sans text-brand-black/55 tracking-[0.15em] uppercase"
+          >
+            一杯の向こうに、つくる人がいる
+          </p>
+        </div>
+
+        <div class="space-y-4 my-8">
+          <span
+            class="inline-block px-3 py-1 text-[10px] font-sans font-bold tracking-widest text-white bg-brand-black rounded-full"
+          >
+            スマートフォンで 3秒即決！
+          </span>
+          <h2 class="text-xl font-bold leading-snug text-brand-black">
+            本日のペアリング診断<br />
+            <span class="text-[11px] font-sans text-brand-black/60 block mt-1"
+              >極上の酒 ✕ こだわりのつまみ</span
+            >
+          </h2>
+          <p
+            class="text-[11px] font-sans text-brand-black/50 leading-relaxed max-w-xs mx-auto"
+          >
+            「お酒の好み」や「今の胃袋のすき具合」から、<br />
+            あなたに完全にシンクロする今日の一杯を診断。
+          </p>
+        </div>
+
+        <!-- QR Code -->
+        <div
+          class="w-48 h-48 mx-auto bg-white p-2 border border-brand-black/10 rounded-2xl flex items-center justify-center mb-6"
+        >
+          <img
+            id="print-flyer-qr"
+            src=""
+            alt="Sake Crafters App QR"
+            class="w-44 h-44"
+          />
+        </div>
+
+        <!-- Table Guide -->
+        <div class="space-y-2 border-t border-brand-black/10 pt-6 font-sans">
+          <p class="text-[10px] text-brand-black/60">
+            📸 スマートフォンのカメラで読み取ってください。
+          </p>
+          <div class="text-[9px] text-brand-black/40 mt-1 uppercase">
+            自社醸造「椿・藤・萩」 ✕ 名物揚げ物・おつまみ
+          </div>
+          <div
+            id="print-table-badge"
+            class="text-xs font-sans font-bold text-white bg-brand-black inline-block px-3 py-1 rounded mt-2"
+          >
+            <!-- Dynamic Table Badge -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-brand-black/10 bg-brand-lightGray/30 py-6 text-center text-[10px] text-brand-black/50 space-y-2 no-print"
+    >
+      <div class="font-sans font-bold tracking-wide">
+        SAKE & APETIZER STAND「SAKE CRAFTERS」© 2026 All Rights Reserved.
+      </div>
+      <div class="flex justify-center space-x-2 text-brand-black/40 font-serif">
+        <span>椿（純米大吟醸）</span><span>|</span><span>藤（純米吟醸）</span
+        ><span>|</span><span>萩（純米酒）</span>
+      </div>
+      <div class="pt-2">
+        <button
+          onclick="openStaffModal()"
+          class="text-[9px] text-brand-black font-bold hover:underline flex items-center justify-center gap-1 mx-auto py-1 px-3 border border-brand-black/10 rounded bg-white"
+        >
+          <i class="fa-solid fa-qrcode"></i>
+          <span id="btn-staff-trigger">店頭用QRコード・卓上POPの作成</span>
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      // ================= MULTI-LANGUAGE TRANSLATION DICTIONARY =================
+      const i18n = {
+        ja: {
+          logoSub: '一杯の向こうに、つくる人がいる',
+          tagline: 'Kakuuchi standing bar & shop',
+          heroTitle:
+            "一杯の向こうに、<br>つくる人がいる。<br><span class='text-2xl md:text-3xl font-bold underline decoration-brand-black/20' style='font-size: 1.1rem'>厳選した酒とつまみを角打ちで楽しむ</span>",
+          heroDesc:
+            '伝統とモダンが交差する酒屋。自社ブランド「椿・藤・萩」を筆頭に、全国の銘酒を最高のつまみと共にご提供いたします。',
+          craftedTitle: 'CRAFTERS SIGNATURE BREW / 自社醸造',
+          craftedBadge: 'Our Pride & Joy',
+          btnQuickTitle: '3秒で即決！今日のペアリング診断',
+          btnQuickDesc:
+            '今の気分やお好みの組み合わせパターンをもとに、あなたが今すぐに飲むべき至福の1杯と最高に合う自慢のつまみをご提案。',
+          btnQuickAction: '診断をはじめる',
+          btnAiTitle: 'AI利酒師におまかせ診断',
+          btnAiDesc:
+            '「とにかく今日は元気がほしい」「バナナやお米の芳醇な香りを楽しみたい」など、今のあなたの気分をそのまま自由に入力してください。',
+          btnAiAction: '自由に相談する',
+          aiTitle: 'AI利酒師におまかせ',
+          aiDesc:
+            '体調、気分、挑戦したいお好みの味をお聞かせください。自慢の「椿・藤・萩」や、厳選銘酒から究極の1杯＆1皿をご提案します。',
+          aiPlaceholder:
+            '例：仕事帰りのご褒美に、上品で華やかな自社の「椿（純米大吟醸）」と、サクサクのジューシー唐揚げを合わせたい！',
+          aiHintTitle: '入力のヒント（タップで挿入）',
+          aiSubmit: 'AI利酒師に相談する',
+          loadingText: '利酒師が相性を吟味しています...',
+          loadingSub:
+            'お酒の繊細な風味と、揚げたてつまみの温度・味わいのシンクロ率を計算しています。',
+          resHeaderTag: 'SAKE CRAFTERS RECOMMENDED PAIRING',
+          resDrinkBadge: '🍶 SELECTED DRINK',
+          resFoodBadge: '🍛 SELECTED FOOD',
+          resLabelStyle: '提供スタイル',
+          resLabelSakePrice: '単品価格',
+          resLabelGenre: '味わいジャンル',
+          resLabelFoodPrice: '単品通常価格',
+          resLabelFormula: 'マリアージュの調和方程式',
+          resLabelCommentary: '利酒師からの解説',
+          resLabelSum: 'ペアリング合計価格:',
+          resLabelTax: '(税込)',
+          resLabelNotice:
+            '※セット値引きはございません。単品価格の合算となります。',
+          resBtnOrder: 'これに決定（画面を店員に提示）',
+          resBtnRetry: 'もう一度診断する',
+          resBtnCopy: '結果をコピーする',
+          modalTitle: 'ご注文内容の確認',
+          modalDesc:
+            'この画面のままお近くのスタッフにお見せいただき、口頭にてオーダーをお願いします。',
+          modalLabelDrink: 'お酒',
+          modalLabelFood: 'つまみ',
+          modalLabelTotal: '合計金額:',
+          modalFooterMsg: 'こだわりのお酒と一皿をすぐにお届けします。',
+          modalBtnClose: '閉じる',
+          staffTrigger: '店頭用QRコード・卓上POPの作成',
+        },
+        en: {
+          logoSub: 'Behind every glass, there is a creator',
+          tagline: 'Kakuuchi standing bar & shop',
+          heroTitle:
+            "Behind every glass, there is a creator.<br><span class='text-2xl md:text-3xl font-bold underline decoration-brand-black/20'>Enjoy curated Sake & Appetizers at Kakuuchi</span>",
+          heroDesc:
+            "A sake shop blending tradition and modern style. Taste our premium brands 'Tsubaki, Fuji, Hagi' paired with local treats.",
+          craftedTitle: 'CRAFTERS SIGNATURE BREW / Flagships',
+          craftedBadge: 'Our Pride & Joy',
+          btnQuickTitle: "3-Sec Decision! Today's Pairing",
+          btnQuickDesc:
+            'Find your ideal combination of crisp sake and perfect bar food in three simple taps.',
+          btnQuickAction: 'Start Diagnostic',
+          btnAiTitle: 'AI Sake Sommelier Match',
+          btnAiDesc:
+            'Tell us exactly how you feel or what flavours you are seeking today, and let our AI Kikisake-shi select for you.',
+          btnAiAction: 'Consult AI',
+          aiTitle: 'AI Sake Sommelier',
+          aiDesc:
+            'Express your cravings freely. Our AI Kikisake-shi will analyze flavors to generate the ultimate pairing just for you.',
+          aiPlaceholder:
+            'e.g., I had a long day and want a rich, fruity Tsubaki Junmai Daiginjo with some crispy Karaage!',
+          aiHintTitle: 'Suggestions (Tap to use)',
+          aiSubmit: 'Ask AI Sommelier',
+          loadingText: 'Sake Sommelier is analyzing...',
+          loadingSub:
+            'Calculating flavor sync rates between sake properties and cooked dishes.',
+          resHeaderTag: 'SAKE CRAFTERS RECOMMENDED PAIRING',
+          resDrinkBadge: '🍶 SELECTED DRINK',
+          resFoodBadge: '🍛 SELECTED FOOD',
+          resLabelStyle: 'Service Style',
+          resLabelSakePrice: 'Sake Price',
+          resLabelGenre: 'Food Genre',
+          resLabelFoodPrice: 'Food Price',
+          resLabelFormula: 'Marriage Formula',
+          resLabelCommentary: 'Sommelier Commentary',
+          resLabelSum: 'Pairing Total:',
+          resLabelTax: '(incl. tax)',
+          resLabelNotice:
+            '※No set discount applied. Total sum of standard pricing.',
+          resBtnOrder: 'Order this (Show to staff)',
+          resBtnRetry: 'Diagnose Again',
+          resBtnCopy: 'Copy Result',
+          modalTitle: 'Confirm Order',
+          modalDesc:
+            'Please show this screen to our nearest staff member to place your order.',
+          modalLabelDrink: 'Sake / Drink',
+          modalLabelFood: 'Appetizer / Food',
+          modalLabelTotal: 'Total Amount:',
+          modalFooterMsg: 'Your premium pairing will be served shortly.',
+          modalBtnClose: 'Close',
+          staffTrigger: 'Generate Table QR Code & POP',
+        },
+      };
+
+      let currentLang = 'ja';
+
+      function changeLanguage(lang) {
+        currentLang = lang;
+        const t = i18n[lang] || i18n['ja'];
+
+        // Translate UI Elements
+        document.getElementById('sub-logo-text').textContent = t.logoSub;
+        document.getElementById('tagline-badge').textContent = t.tagline;
+        document.getElementById('hero-title').innerHTML = t.heroTitle;
+        document.getElementById('hero-desc').textContent = t.heroDesc;
+        document.getElementById('crafted-title').innerHTML =
+          `${t.craftedTitle}`;
+        document.getElementById('crafted-badge').textContent = t.craftedBadge;
+        document.getElementById('btn-quick-title').textContent =
+          t.btnQuickTitle;
+        document.getElementById('btn-quick-desc').textContent = t.btnQuickDesc;
+        document.getElementById('btn-quick-action').innerHTML =
+          `${t.btnQuickAction} <i class="fa-solid fa-arrow-right"></i>`;
+        document.getElementById('btn-ai-title').textContent = t.btnAiTitle;
+        document.getElementById('btn-ai-desc').textContent = t.btnAiDesc;
+        document.getElementById('btn-ai-action').innerHTML =
+          `${t.btnAiAction} <i class="fa-solid fa-arrow-right"></i>`;
+
+        // Back buttons
+        document.getElementById('back-home-btn1').innerHTML =
+          `<i class="fa-solid fa-house"></i> ${t.resBtnRetry}`;
+        document.getElementById('back-home-btn2').innerHTML =
+          `<i class="fa-solid fa-arrow-left"></i> ${t.resBtnRetry}`;
+
+        // AI section
+        document.getElementById('ai-kikisake-title').textContent = t.aiTitle;
+        document.getElementById('ai-kikisake-desc').textContent = t.aiDesc;
+        document.getElementById('ai-input').placeholder = t.aiPlaceholder;
+        document.getElementById('ai-hint-title').textContent = t.aiHintTitle;
+        document.getElementById('ai-submit-btn').innerHTML =
+          `<span>${t.aiSubmit}</span> <i class="fa-solid fa-sparkles"></i>`;
+
+        // Static Results tags
+        document.getElementById('res-header-tag').textContent = t.resHeaderTag;
+        document.getElementById('res-drink-badge').textContent =
+          t.resDrinkBadge;
+        document.getElementById('res-food-badge').textContent = t.resFoodBadge;
+        document.getElementById('res-label-style').textContent =
+          t.resLabelStyle;
+        document.getElementById('res-label-sakeprice').textContent =
+          t.resLabelSakePrice;
+        document.getElementById('res-label-genre').textContent =
+          t.resLabelGenre;
+        document.getElementById('res-label-foodprice').textContent =
+          t.resLabelFoodPrice;
+        document.getElementById('res-label-formula').textContent =
+          t.resLabelFormula;
+        document.getElementById('res-label-commentary').innerHTML =
+          `<i class="fa-solid fa-comment-dots"></i> ${t.resLabelCommentary}`;
+        document.getElementById('res-label-sum').textContent = t.resLabelSum;
+        document.getElementById('res-label-tax').textContent = t.resLabelTax;
+        document.getElementById('res-label-notice').textContent =
+          t.resLabelNotice;
+        document.getElementById('res-btn-order').textContent = t.resBtnOrder;
+        document.getElementById('res-btn-retry').innerHTML =
+          `<i class="fa-solid fa-arrow-rotate-left"></i> ${t.resBtnRetry}`;
+        document.getElementById('res-btn-copy').innerHTML =
+          `<i class="fa-solid fa-copy"></i> ${t.resBtnCopy}`;
+
+        // Modal Strings
+        document.getElementById('modal-title').textContent = t.modalTitle;
+        document.getElementById('modal-desc').textContent = t.modalDesc;
+        document.getElementById('modal-label-drink').textContent =
+          t.modalLabelDrink;
+        document.getElementById('modal-label-food').textContent =
+          t.modalLabelFood;
+        document.getElementById('modal-label-total').textContent =
+          t.modalLabelTotal;
+        document.getElementById('modal-footer-msg').textContent =
+          t.modalFooterMsg;
+        document.getElementById('modal-btn-close').textContent =
+          t.modalBtnClose;
+
+        // Footers
+        document.getElementById('btn-staff-trigger').textContent =
+          t.staffTrigger;
+
+        // Re-render current question if active to update options translations
+        if (
+          !document
+            .getElementById('quick-diagnostic-screen')
+            .classList.contains('hidden')
+        ) {
+          showQuestion();
+        }
+      }
+
+      // ================= MASTER SAKE & FOOD PRICES =================
+      const SAKE_MASTER = {
+        '椿（純米大吟醸）': { price: 880, cleanName: '椿（純米大吟醸）' },
+        '藤（純米吟醸）': { price: 750, cleanName: '藤（純米吟醸）' },
+        '萩（純米酒）': { price: 650, cleanName: '萩（純米酒）' },
+        'ばくれん 吟醸超辛口': { price: 600, cleanName: 'ばくれん 吟醸超辛口' },
+        '雪の茅舎 純米吟醸': { price: 650, cleanName: '雪の茅舎 純米吟醸' },
+        'にいだしぜんしゅ 純米原酒': {
+          price: 700,
+          cleanName: 'にいだしぜんしゅ 純米原酒',
+        },
+        '天吹 恋するバナナ': { price: 750, cleanName: '天吹 恋するバナナ' },
+        '純大無濾過生原酒 PUGBLACKPEARL': {
+          price: 700,
+          cleanName: '純大無濾過生原酒 PUGBLACKPEARL',
+        },
+        '獺祭 純米大吟醸４５': {
+          price: 1080,
+          cleanName: '獺祭 純米大吟醸４５',
+        },
+        '獺祭 純米大吟醸 磨き二割三分': {
+          price: 1880,
+          cleanName: '獺祭 純米大吟醸 磨き二割三分',
+        },
+        '栄光富士 煌凛': { price: 800, cleanName: '栄光富士 煌凛' },
+        '鍋島 純米吟醸': { price: 850, cleanName: '鍋島 純米吟醸' },
+        '楯野川 純米大吟醸 本流辛口': {
+          price: 900,
+          cleanName: '楯野川 純米大吟醸 本流辛口',
+        },
+        '作 槐山一滴水 純米吟醸': {
+          price: 1680,
+          cleanName: '作 槐山一滴水 純米吟醸',
+        },
+        '蒼田 純米吟醸': { price: 800, cleanName: '蒼田 純米吟醸' },
+        '七賢 スパークリング 山ノ霞': {
+          price: 750,
+          cleanName: '七賢 スパークリング 山ノ霞',
+        },
+        '3酒飲み比べ': { price: 1380, cleanName: 'こだわり日本酒 3酒飲み比べ' },
+      };
+
+      const FOOD_MASTER = {
+        谷中銀座のメンチカツ: { price: 350, cleanName: '谷中銀座のメンチカツ' },
+        大分佐伯の高橋コロッケ: {
+          price: 250,
+          cleanName: '大分佐伯の高橋コロッケ',
+        },
+        'にゃんこ串〜さつま揚げ〜': {
+          price: 380,
+          cleanName: 'にゃんこ串〜さつま揚げ〜',
+        },
+        谷中銀座のチキン唐揚げ: {
+          price: 450,
+          cleanName: '谷中銀座のチキン唐揚げ',
+        },
+        ジャンボアジフライ: { price: 480, cleanName: 'ジャンボアジフライ' },
+        メンチコロッケカレー: {
+          price: 1500,
+          cleanName: 'メンチコロッケカレー',
+        },
+        メンチカツカレー: { price: 1300, cleanName: 'メンチカツカレー' },
+        コロッケカレー: { price: 1200, cleanName: 'コロッケカレー' },
+        チキン唐揚げカレー: { price: 1400, cleanName: 'チキン唐揚げカレー' },
+        チキン唐揚げ丼: { price: 1400, cleanName: 'チキン唐揚げ丼' },
+        HOTメキシカン唐揚げ丼: {
+          price: 1400,
+          cleanName: 'HOTメキシカン唐揚げ丼',
+        },
+        'ババヘラアイス バラ盛りカップ': {
+          price: 500,
+          cleanName: 'ババヘラアイス バラ盛りカップ',
+        },
+        'ババヘラアイス ソーダ&レモン': {
+          price: 500,
+          cleanName: 'ババヘラアイス ソーダ&レモン',
+        },
+      };
+
+      // ================= QUESTIONS CONFIGURATION =================
+      const questions = {
+        ja: [
+          {
+            title: '今日のあなたの気分・胃袋のすき具合は？',
+            choices: [
+              {
+                text: '🍖 お腹ペコペコ！がっつりご飯や肉料理を楽しみたい',
+                val: 'heavy',
+              },
+              {
+                text: '🍺 軽く一杯！自慢の揚げ物つまみでサクッとやりたい',
+                val: 'snack',
+              },
+              {
+                text: '🍶 いろいろ飲み比べたい！こだわりの酒と唐揚げ',
+                val: 'flight',
+              },
+              {
+                text: '🌟 新しい味の驚き・革新的なペアリングに挑戦したい',
+                val: 'adventure',
+              },
+            ],
+          },
+          {
+            title: '好みの日本酒の味タイプは？',
+            choices: [
+              {
+                text: '薫酒 (くんしゅ) — 華やかな香りとフルーティーな味わい',
+                val: 'tsubaki',
+              },
+              {
+                text: '爽酒 (そうしゅ) — スッキリ軽快で、きれいな辛口',
+                val: 'fuji',
+              },
+              {
+                text: '醇酒 (じゅんしゅ) — お米のコクと豊かな旨口',
+                val: 'hagi',
+              },
+              {
+                text: 'スパークリングや、個性あふれる新しい極み',
+                val: 'others',
+              },
+            ],
+          },
+          {
+            title: '合わせたいフードのジャンルは？',
+            choices: [
+              {
+                text: '👑 ジューシーなお肉（メンチカツ・唐揚げなど）',
+                val: 'meat',
+              },
+              {
+                text: '🐟 海の幸（アジフライ・さつま揚げにゃんこ串）',
+                val: 'fish',
+              },
+              { text: '🍛 旨味爆発カレー・スパイス系', val: 'curry' },
+              { text: '🍧 冷たくて甘いデザート系', val: 'sweet' },
+            ],
+          },
+        ],
+        en: [
+          {
+            title: 'What is your mood and stomach space today?',
+            choices: [
+              {
+                text: '🍖 Starving! Want heavy meat or rice bowl',
+                val: 'heavy',
+              },
+              {
+                text: '🍺 Quick bite! Just want fried appetizers and clean sake',
+                val: 'snack',
+              },
+              {
+                text: '🍶 Want a Sake Tasting Flight with some hot Karaage',
+                val: 'flight',
+              },
+              {
+                text: '🌟 Want to challenge new, innovative flavor marriages',
+                val: 'adventure',
+              },
+            ],
+          },
+          {
+            title: 'What is your preferred Sake style?',
+            choices: [
+              {
+                text: 'Kunshu — Gorgeously aromatic and fruity sake',
+                val: 'tsubaki',
+              },
+              {
+                text: 'Soshu — Clean, bone-dry and super refreshing sake',
+                val: 'fuji',
+              },
+              {
+                text: 'Junshu — Deep earthy rice umami and rich body sake',
+                val: 'hagi',
+              },
+              {
+                text: 'Sparkling sakes or highly exotic modern styles',
+                val: 'others',
+              },
+            ],
+          },
+          {
+            title: 'Which appetizer style do you prefer?',
+            choices: [
+              {
+                text: '👑 Juicy meats (Yanaka Karaage / Menchi-katsu)',
+                val: 'meat',
+              },
+              {
+                text: '🐟 Fish & Seafood (Fluffy Aji-fry or Nyanko skewer)',
+                val: 'fish',
+              },
+              { text: '🍛 Deep-flavored Curry and spicy dishes', val: 'curry' },
+              { text: '🍧 Ice-cold desserts and sweets', val: 'sweet' },
+            ],
+          },
+        ],
+      };
+
+      // ================= DYNAMIC PAIRING SCOPES =================
+      const SAKE_SCOPES = {
+        tsubaki: [
+          '獺祭 純米大吟醸４５',
+          '獺祭 純米大吟醸 磨き二割三分',
+          '鍋島 純米吟醸',
+          '作 槐山一滴水 純米吟醸',
+          '雪の茅舎 純米吟醸',
+          'にいだしぜんしゅ 純米原酒',
+          '純大無濾過生原酒 PUGBLACKPEARL',
+          '天吹 恋するバナナ',
+        ],
+        fuji: [
+          '椿（純米大吟醸）',
+          '蒼田 純米吟醸',
+          '七賢 スパークリング 山ノ霞',
+          'ばくれん 吟醸超辛口',
+          '楯野川 純米大吟醸 本流辛口',
+        ],
+        hagi: ['萩（純米酒）'],
+        others: [
+          '七賢 スパークリング 山ノ霞',
+          '天吹 恋するバナナ',
+          '純大無濾過生原酒 PUGBLACKPEARL',
+        ],
+      };
+
+      const FOOD_SCOPES_Q1 = {
+        heavy: [
+          'メンチコロッケカレー',
+          'メンチカツカレー',
+          'コロッケカレー',
+          'チキン唐揚げカレー',
+          'チキン唐揚げ丼',
+          'HOTメキシカン唐揚げ丼',
+          '谷中銀座のメンチカツ',
+          '谷中銀座のチキン唐揚げ',
+          'にゃんこ串〜さつま揚げ〜',
+          'ジャンボアジフライ',
+        ],
+        snack: [
+          '谷中銀座のメンチカツ',
+          '大分佐伯の高橋コロッケ',
+          'にゃんこ串〜さつま揚げ〜',
+          '谷中銀座のチキン唐揚げ',
+          'ジャンボアジフライ',
+          'メンチコロッケカレー',
+          'メンチカツカレー',
+          'コロッケカレー',
+          'チキン唐揚げカレー',
+          'チキン唐揚げ丼',
+          'HOTメキシカン唐揚げ丼',
+        ],
+        adventure: [
+          'HOTメキシカン唐揚げ丼',
+          'ババヘラアイス バラ盛りカップ',
+          'ババヘラアイス ソーダ&レモン',
+          '谷中銀座のメンチカツ',
+          'にゃんこ串〜さつま揚げ〜',
+          '谷中銀座のチキン唐揚げ',
+          'ジャンボアジフライ',
+          'メンチコロッケカレー',
+          'メンチカツカレー',
+          'チキン唐揚げカレー',
+          'チキン唐揚げ丼',
+        ],
+      };
+
+      const FOOD_SCOPES_Q3 = {
+        meat: ['谷中銀座のメンチカツ', '谷中銀座のチキン唐揚げ'],
+        fish: ['にゃんこ串〜さつま揚げ〜', 'ジャンボアジフライ'],
+        curry: [
+          'メンチコロッケカレー',
+          'メンチカツカレー',
+          'コロッケカレー',
+          'チキン唐揚げカレー',
+          'チキン唐揚げ丼',
+          'HOTメキシカン唐揚げ丼',
+        ],
+        sweet: [
+          'ババヘラアイス バラ盛りカップ',
+          'ババヘラアイス ソーダ&レモン',
+        ],
+      };
+
+      let currentQuestionIndex = 0;
+      let userAnswers = [];
+
+      // ================= SCREEN NAVIGATION =================
+      function goToScreen(screenId) {
+        [
+          'home-screen',
+          'quick-diagnostic-screen',
+          'ai-diagnostic-screen',
+          'loading-screen',
+          'result-screen',
+        ].forEach((id) => {
+          const el = document.getElementById(id);
+          if (id === screenId) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function goToHome() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        goToScreen('home-screen');
+      }
+
+      // ================= CUSTOM TOAST SYSTEM =================
+      function showToast(message, iconClass = 'fa-info-circle') {
+        const toast = document.getElementById('toast-notification');
+        const messageEl = document.getElementById('toast-message');
+        const iconEl = document.getElementById('toast-icon');
+
+        messageEl.textContent = message;
+        iconEl.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        toast.classList.add('opacity-100');
+
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 3000);
+      }
+
+      function insertHint(text) {
+        document.getElementById('ai-input').value = text;
+      }
+
+      function startAiDiagnostic() {
+        document.getElementById('ai-input').value = '';
+        goToScreen('ai-diagnostic-screen');
+      }
+
+      // ================= DIAGNOSTIC FLOW =================
+      function startQuickDiagnostic() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        showQuestion();
+        goToScreen('quick-diagnostic-screen');
+      }
+
+      function showQuestion() {
+        const list = questions[currentLang] || questions['ja'];
+        const question = list[currentQuestionIndex];
+
+        const totalQuestions = list.length;
+        const progressPercent = Math.round(
+          ((currentQuestionIndex + 1) / totalQuestions) * 100
+        );
+
+        // Handle updates on text
+        document.getElementById('question-step-text').textContent =
+          currentLang === 'ja'
+            ? `質問 ${currentQuestionIndex + 1} / ${totalQuestions}`
+            : `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
+        document.getElementById('question-progress-percent').textContent =
+          `${progressPercent}%`;
+        document.getElementById('question-progress-bar').style.width =
+          `${progressPercent}%`;
+
+        document.getElementById('question-title').textContent = question.title;
+
+        const choicesContainer = document.getElementById('question-choices');
+        choicesContainer.innerHTML = '';
+
+        question.choices.forEach((choice) => {
+          const btn = document.createElement('button');
+          btn.className =
+            'w-full p-4 text-left text-xs md:text-sm rounded-xl border border-brand-black/10 bg-brand-lightGray/30 hover:border-brand-black hover:bg-brand-lightGray text-brand-black transition duration-200 flex items-center justify-between group';
+          btn.innerHTML = `
+                    <span class="font-bold">${choice.text}</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-brand-black/30 group-hover:text-brand-black group-hover:translate-x-1 transition-all"></i>
+                `;
+          btn.onclick = () => selectChoice(choice.val);
+          choicesContainer.appendChild(btn);
+        });
+      }
+
+      function selectChoice(val) {
+        userAnswers.push(val);
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions[currentLang].length) {
+          showQuestion();
+        } else {
+          processQuickResult();
+        }
+      }
+
+      // Deterministic Hashing to spread selections cleanly and evenly
+      function getDeterministicSelection(arr, seed) {
+        let hash = 0;
+        for (let i = 0; i < seed.length; i++) {
+          hash = seed.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        const index = Math.abs(hash) % arr.length;
+        return arr[index];
+      }
+
+      // Dynamic Pairing Processor
+      function processQuickResult() {
+        goToScreen('loading-screen');
+
+        const q1 = userAnswers[0]; // heavy, snack, flight, adventure
+        const q2 = userAnswers[1]; // tsubaki, fuji, hagi, others
+        const q3 = userAnswers[2]; // meat, fish, curry, sweet
+
+        const seed = q1 + q2 + q3;
+
+        // 1. Narrow Sake Selection
+        let selectedSake = '';
+        if (q1 === 'flight') {
+          selectedSake = '3酒飲み比べ';
+        } else {
+          const sakeCandidates = SAKE_SCOPES[q2] || SAKE_SCOPES['tsubaki'];
+          selectedSake = getDeterministicSelection(sakeCandidates, seed);
+        }
+
+        // 2. Narrow Food Selection
+        let selectedFood = '';
+        let foodCandidates = [];
+
+        if (q1 === 'flight') {
+          // Determined entirely by Q3
+          foodCandidates = FOOD_SCOPES_Q3[q3] || FOOD_SCOPES_Q3['meat'];
+        } else {
+          // Intersect Q1 scope and Q3 scope
+          const scopeQ1 = FOOD_SCOPES_Q1[q1] || FOOD_SCOPES_Q1['snack'];
+          const scopeQ3 = FOOD_SCOPES_Q3[q3] || FOOD_SCOPES_Q3['meat'];
+
+          foodCandidates = scopeQ1.filter((food) => scopeQ3.includes(food));
+
+          // Fallback if intersection is empty (e.g. heavy + sweet)
+          if (foodCandidates.length === 0) {
+            foodCandidates = scopeQ3;
+          }
+        }
+
+        selectedFood = getDeterministicSelection(foodCandidates, seed);
+
+        // 3. Compile dynamic sommelier response properties
+        const sakeVal = SAKE_MASTER[selectedSake].price;
+        const foodVal = FOOD_MASTER[selectedFood].price;
+        const totalVal = sakeVal + foodVal;
+
+        const computedData = compileDynamicReview(
+          selectedSake,
+          selectedFood,
+          q2,
+          q3
+        );
+
+        setTimeout(() => {
+          document.getElementById('res-pairing-name').textContent =
+            computedData.pairingName;
+          document.getElementById('res-sake-name').textContent = selectedSake;
+          document.getElementById('res-sake-spec').textContent =
+            computedData.sakeSpec;
+          document.getElementById('res-sake-temp').textContent =
+            computedData.sakeTemp;
+
+          document.getElementById('res-food-name').textContent = selectedFood;
+          document.getElementById('res-food-spec').textContent =
+            computedData.foodSpec;
+          document.getElementById('res-food-type').textContent =
+            computedData.foodType;
+
+          document.getElementById('res-synergy').textContent =
+            computedData.synergy;
+          document.getElementById('res-description').textContent =
+            computedData.description;
+
+          document.getElementById('res-sake-price-badge').textContent =
+            `${sakeVal.toLocaleString()}円`;
+          document.getElementById('res-food-price-badge').textContent =
+            `${foodVal.toLocaleString()}円`;
+          document.getElementById('res-price').textContent =
+            `${totalVal.toLocaleString()}円`;
+
+          window.currentPairing = {
+            pairingName: computedData.pairingName,
+            sakeName: selectedSake,
+            sakePrice: sakeVal,
+            foodName: selectedFood,
+            foodPrice: foodVal,
+            normalTotal: totalVal,
+            synergy: computedData.synergy,
+            description: computedData.description,
+          };
+
+          goToScreen('result-screen');
+        }, 1000);
+      }
+
+      // Procedural Sommelier Engine
+      function compileDynamicReview(sake, food, sakeType, foodType) {
+        const isJa = currentLang === 'ja';
+
+        // Base Spec Strings
+        let sakeSpec = isJa
+          ? '伝統の技で醸された、当店厳選の極上日本酒。'
+          : 'A premium sake meticulously sourced by SAKE CRAFTERS.';
+        let sakeTemp = isJa ? 'すっきり冷酒' : 'Chilled';
+        let foodSpec = isJa
+          ? '揚げたて・作りたてを提供する極上の下町メニュー。'
+          : 'Freshly prepared neighborhood premium dish.';
+        let foodTypeStr = isJa ? '自慢のつまみ' : 'Curated appetizer';
+
+        // Categorize Sake Styles and Temps
+        if (sakeType === 'tsubaki') {
+          sakeSpec = isJa
+            ? '薫酒：華やかでフルーティーな香りが上品に湧き立つ名酒。'
+            : 'Aromatic Kunshu: Gorgeous floral notes with a silky fruity finish.';
+          sakeTemp = isJa ? '優しく冷やして' : 'Lightly Chilled';
+        } else if (sakeType === 'fuji') {
+          sakeSpec = isJa
+            ? '爽酒：みずみずしく軽快、ノドを軽やかに潤す美しき辛口。'
+            : 'Crispy Soshu: Highly refreshing, clean bone-dry character.';
+          sakeTemp = isJa ? 'キンキンに冷やして' : 'Ice Cold';
+        } else if (sakeType === 'hagi') {
+          sakeSpec = isJa
+            ? '醇酒：お米本来の重厚な旨みと、ふくよかな芳醇さが際立つ純米酒。'
+            : 'Rich Junshu: Earthy, savory rice body with elegant complexity.';
+          sakeTemp = isJa ? '常温 または ぬる燗' : 'Warm / Room Temp';
+        } else {
+          sakeSpec = isJa
+            ? '個性派：弾ける発泡感やユニークな酵母がもたらす新しい極み。'
+            : 'Unique: Sparkling fizz or modern flower-yeast innovation.';
+          sakeTemp = isJa ? '雪冷え冷酒' : 'Extra Cold';
+        }
+
+        // Specific Sake Overrides
+        if (sake === '3酒飲み比べ') {
+          sakeSpec = isJa
+            ? '色々飲み比べたい方に最適な、自慢のお酒3種類を贅沢に味わう贅沢フライト。'
+            : 'Taste sand-box: A premium curated flight of 3 distinct sakes.';
+          sakeTemp = isJa ? 'それぞれの推奨温度で' : 'Individual Temperatures';
+        }
+
+        // Categorize Food Styles
+        if (foodType === 'meat') {
+          foodSpec = isJa
+            ? 'サクサクのジューシーな衣から溢れ出す濃厚な肉汁。'
+            : 'Crispy golden coating dripping with rich, savory juices.';
+          foodTypeStr = isJa ? 'ジューシーお肉料理' : 'Juicy Meats';
+        } else if (foodType === 'fish') {
+          foodSpec = isJa
+            ? '海の豊かな風味が凝縮された、衣の香ばしさが抜群の一皿。'
+            : 'Savory coastal goodness with a beautifully light finish.';
+          foodTypeStr = isJa ? '海の幸フライ・練り物' : 'Seafood Delicacies';
+        } else if (foodType === 'curry') {
+          foodSpec = isJa
+            ? '数々のスパイスと深いコクが、お米の甘みを最高に引き立てる名物。'
+            : 'A deep spice complexity that perfectly locks onto high-end sakes.';
+          foodTypeStr = isJa ? 'スパイス＆旨口カレー' : 'Deep Spiced / Curry';
+        } else {
+          foodSpec = isJa
+            ? '冷んやりした懐かしき甘さが、お口の中をリフレッシュする絶品氷菓。'
+            : 'A comforting, sweet frozen local classic to refresh your senses.';
+          foodTypeStr = isJa ? '冷たい甘味デザート' : 'Ice-Cold Desserts';
+        }
+
+        // Dynamic Synergy Formulas
+        let synergy = '';
+        let description = '';
+
+        if (foodType === 'sweet') {
+          synergy = isJa
+            ? 'お酒のエキゾチック果実香 × 氷菓の冷甘 ＝ 大人の贅沢フルーツカクテル'
+            : 'Exotic Bouquet × Nostalgic Sherbet = Heavenly Frozen Cocktail';
+          description = isJa
+            ? `「${sake}」の持つ甘美なアロマが、冷たくシャリシャリとした「${food}」の甘みと混ざり合うことで、お互いを高め合います。まるで洗練された特製フルーツカクテルを飲んでいるかのような新感覚の余韻をお楽しみください。`
+            : `The beautiful floral sweetness of "${sake}" directly blends with the crisp, icy sweetness of "${food}". It instantly transforms the pairing into a premium, custom frozen fruit cocktail of the highest tier.`;
+        } else if (foodType === 'curry') {
+          synergy = isJa
+            ? 'スパイスの芳醇な刺激 × お酒の旨口ボリューム ＝ 旨辛スウィートの極限シナジー'
+            : 'Rich Heat Salsa Spice × Robust Rice Umami = Bold Flavor Frontier';
+          description = isJa
+            ? `「${food}」の持つスパイシーで奥深いコクを、「${sake}」の豊かなボディが優しく包み込みます。スパイスの熱を冷たい日本酒が和らげ、口の中で奇跡的な「甘・辛・旨」の交差が生み出されます。`
+            : `The deep, complex spices of "${food}" are beautifully embraced by the robust body of "${sake}". The rice sweetness dampens the heat elegantly, multiplying the savory depth of both components.`;
+        } else {
+          synergy = isJa
+            ? `お酒のきれいな酸・旨み × 揚げたて衣の香ばしさ ＝ 旨さの無限ループ`
+            : 'Crisp Acidic Structure × Hot Savory Crust = Absolute Balance';
+          description = isJa
+            ? `アツアツでジューシーな「${food}」を口に含んだあと、「${sake}」を一杯。衣の香ばしい油分を、お酒の上品な酸ときれいなボディが瞬時に洗い流し、極上の余韻と共に次のひと口へと誘います。`
+            : `Take a bite of the hot, crispy "${food}", then follow with a refreshing sip of "${sake}". The sake's pristine acidic structure cleanses the savory crust oiliness instantly, setting up the perfect canvas for your next bite.`;
+        }
+
+        const pName = isJa ? `${sake} ＆ ${food}` : `${sake} & ${food}`;
+
+        return {
+          pairingName: pName,
+          sakeSpec,
+          sakeTemp,
+          foodSpec,
+          foodType: foodTypeStr,
+          synergy,
+          description,
+        };
+      }
+
+      // ================= AI SOMMELIER (GEMINI API) INTEGRATION =================
+      async function runAiDiagnostic() {
+        const userInput = document.getElementById('ai-input').value.trim();
+        if (!userInput) {
+          const textErr = {
+            ja: '今の気分をご記入いただくか、ヒントタグをタップして入力してください。',
+            en: 'Please share how you feel, or select a suggestion tag to proceed.',
+          };
+          showToast(
+            textErr[currentLang] || textErr['ja'],
+            'fa-exclamation-triangle'
+          );
+          return;
+        }
+
+        goToScreen('loading-screen');
+        const textLoading = {
+          ja: 'AI利酒師が至高のペアリングを設計しています...',
+          en: 'AI Sake Sommelier is crafting your custom pairing...',
+          zh: 'AI利酒师正在为您精心设计专属搭配...',
+          ko: 'AI 사케 소믈리에가 맞춤형 페어링을 제안합니다...',
+          fr: 'Le sommelier IA élabore votre accord...',
+          es: 'El sommelier IA está diseñando tu maridaje...',
+          it: 'Il sommelier IA sta creando il tuo abbinamento...',
+          de: 'Der KI-Sake-Sommelier kreiert Ihr Pairing...',
+          nl: 'AI Sake-Sommelier ontwerpt uw pairing...',
+        };
+        document.getElementById('loading-text').textContent =
+          textLoading[currentLang] || textLoading['ja'];
+
+        const systemPrompt = `
+You are the elite AI Kikisake-shi (Sake Sommelier) of the standing bar "SAKE CRAFTERS".
+Analyze the user's emotional state, fatigue level, or flavors they desire, and recommend a perfect 1-to-1 pairing.
+
+YOU MUST strictly select the sake from the [Sake Lineup] and the dish from the [Food Menu] listed below.
+YOU MUST output the result in the user's chosen language: [${currentLang}]. Write the custom explanation, synergy equation, and specifications entirely in this language!
+
+[Sake Lineup]
+  - 椿（純米大吟醸） [880 yen] (Sleek, pristine pure floral rice sake. Very premium.)
+  - 藤（純米吟醸） [750 yen] (Our driest sake. Very sharp, clean, punchy, bone dry.)
+  - 萩（純米酒） [650 yen] (Full-bodied rice depth, extremely friendly with sauces. No.1 best seller!)
+  - ばくれん 吟醸超辛口 [600 yen]
+  - 雪の茅舎 純米吟醸 [650 yen]
+  - にいだしぜんしゅ 純米原酒 [700 yen]
+  - 天吹 恋するバナナ [750 yen] (Banana flower yeast, rich exotic sweet banana aroma)
+  - 純大無濾過生原酒 PUGBLACKPEARL [700 yen]
+  - 獺祭 純米大吟醸４５ [1080 yen]
+  - 獺祭 純米大吟醸 磨き二割三分 [1880 yen]
+  - 栄光富士 煌凛 [800 yen]
+  - 鍋島 純米吟醸 [850 yen]
+  - 楯野川 純米大吟醸 本流辛口 [900 yen]
+  - 作 槐山一滴水 純米吟醸 [1680 yen]
+  - 蒼田 純米吟醸 [800 yen]
+  - 七賢 スパークリング 山ノ霞 [750 yen]
+  - 3酒飲み比べ [1380 yen]
+
+[Food Menu]
+  - 谷中銀座のメンチカツ [350 yen]
+  - 大分佐伯の高橋コロッケ [250 yen]
+  - にゃんこ串〜さつま揚げ〜 [380 yen]
+  - 谷中銀座のチキン唐揚げ [450 yen]
+  - ジャンボアジフライ [480 yen]
+  - メンチコロッケカレー [1500 yen]
+  - メンチカツカレー [1300 yen]
+  - コロッケカレー [1200 yen]
+  - チキン唐揚げカレー [1400 yen]
+  - チキン唐揚げ丼 [1400 yen]
+  - HOTメキシカン唐揚げ丼 [1400 yen]
+  - ババヘラアイス バラ盛りカップ [500 yen]
+  - ババヘラアイス ソーダ&レモン [500 yen]
+
+[Strict Rules]
+1. Recommend EXACTLY 1 sake and EXACTLY 1 food item from the arrays.
+2. If the user wants a sweet/exotic challenge, "天吹 恋するバナナ" and dessert is perfect. If they want a fiery meaty challenge, "天吹 恋するバナナ" and "HOTメキシカン唐揚げ丼" is supreme.
+3. Write the response as JSON only. Do not wrap in markdown or backticks.
+
+{
+  "pairingName": "A catchy, artistic name for this pairing in ${currentLang}",
+  "sakeName": "EXACT sake name from the array",
+  "sakeSpec": "1-sentence aromatic/regional description in ${currentLang}",
+  "sakeTemp": "Serving style (e.g. ice-cold, warm) in ${currentLang}",
+  "foodName": "EXACT food name from the array",
+  "foodSpec": "1-sentence taste explanation in ${currentLang}",
+  "foodType": "Food category in ${currentLang}",
+  "synergy": "A math equation representing the flavor reaction in ${currentLang}",
+  "description": "A passionate, highly professional sommelier explanation in ${currentLang} (approx 150-200 chars). Explaining exactly why the fat, spices, or sugars harmonise. Never mention any discounts."
+}
+`;
+
+        const userQuery = `My current mood: "${userInput}". Find me the supreme pairing in SAKE CRAFTERS.`;
+        const apiKey = '';
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+        const payload = {
+          contents: [{ parts: [{ text: userQuery }] }],
+          generationConfig: { responseMimeType: 'application/json' },
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+        };
+
+        let response;
+        try {
+          response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } catch (e) {
+          // Ignore API failure
+        }
+
+        if (!response || !response.ok) {
+          setTimeout(() => {
+            processQuickResult(); // Fallback to balanced narrowing
+          }, 1000);
+          return;
+        }
+
+        try {
+          const result = await response.json();
+          const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) {
+            const cleanJson = JSON.parse(text.trim());
+
+            const sakeVal = SAKE_MASTER[cleanJson.sakeName]?.price || 880;
+            const foodVal = FOOD_MASTER[cleanJson.foodName]?.price || 450;
+            const totalVal = sakeVal + foodVal;
+
+            document.getElementById('res-pairing-name').textContent =
+              cleanJson.pairingName;
+            document.getElementById('res-sake-name').textContent =
+              cleanJson.sakeName;
+            document.getElementById('res-sake-spec').textContent =
+              cleanJson.sakeSpec;
+            document.getElementById('res-sake-temp').textContent =
+              cleanJson.sakeTemp;
+
+            document.getElementById('res-food-name').textContent =
+              cleanJson.foodName;
+            document.getElementById('res-food-spec').textContent =
+              cleanJson.foodSpec;
+            document.getElementById('res-food-type').textContent =
+              cleanJson.foodType;
+
+            document.getElementById('res-synergy').textContent =
+              cleanJson.synergy;
+            document.getElementById('res-description').textContent =
+              cleanJson.description;
+
+            document.getElementById('res-sake-price-badge').textContent =
+              `${sakeVal.toLocaleString()}円`;
+            document.getElementById('res-food-price-badge').textContent =
+              `${foodVal.toLocaleString()}円`;
+            document.getElementById('res-price').textContent =
+              `${totalVal.toLocaleString()}円`;
+
+            window.currentPairing = {
+              pairingName: cleanJson.pairingName,
+              sakeName: cleanJson.sakeName,
+              sakePrice: sakeVal,
+              foodName: cleanJson.foodName,
+              foodPrice: foodVal,
+              normalTotal: totalVal,
+              synergy: cleanJson.synergy,
+              description: cleanJson.description,
+            };
+
+            goToScreen('result-screen');
+          } else {
+            processQuickResult();
+          }
+        } catch (err) {
+          processQuickResult();
+        }
+      }
+
+      // ================= SEATS / TABLE ORDER CONFIRMATION =================
+      function showOrderConfirmation() {
+        if (!window.currentPairing) return;
+
+        const data = window.currentPairing;
+        document.getElementById('modal-sake-name').textContent = data.sakeName;
+        document.getElementById('modal-sake-price').textContent =
+          `${data.sakePrice}円`;
+
+        document.getElementById('modal-food-name').textContent = data.foodName;
+        document.getElementById('modal-food-price').textContent =
+          `${data.foodPrice}円`;
+
+        document.getElementById('modal-final-total').textContent =
+          data.normalTotal.toLocaleString();
+
+        document.getElementById('order-modal').classList.remove('hidden');
+      }
+
+      function hideOrderConfirmation() {
+        document.getElementById('order-modal').classList.add('hidden');
+      }
+
+      function copyToClipboard() {
+        if (!window.currentPairing) return;
+
+        const data = window.currentPairing;
+        const textToCopy = `【SAKE CRAFTERS】\n◆提案: ${data.pairingName}\n\n🍶 お酒: ${data.sakeName} (${data.sakePrice}円)\n🍛 フード: ${data.foodName} (${data.foodPrice}円)\n\n◆合計: ${data.normalTotal}円 (税込)\n\n◆相乗効果: ${data.synergy}\n◆解説: ${data.description}`;
+
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          const textSuccess = {
+            ja: 'ペアリング結果をコピーしました！注文や記録にご活用ください。',
+            en: 'Pairing details copied to your clipboard!',
+          };
+          showToast(
+            textSuccess[currentLang] || textSuccess['ja'],
+            'fa-check-circle'
+          );
+        } catch (err) {
+          showToast(
+            'コピーに失敗しました。スクリーンショット等をご利用ください。',
+            'fa-times-circle'
+          );
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // ================= STAFF QR STAND MANUFACTURER =================
+      function openStaffModal() {
+        const currentUrl = window.location.href;
+        document.getElementById('qr-input-url').value = currentUrl;
+        generateQrAndPreview();
+
+        document.getElementById('qr-input-url').oninput = generateQrAndPreview;
+        document.getElementById('qr-input-table').oninput =
+          generateQrAndPreview;
+
+        document.getElementById('staff-modal').classList.remove('hidden');
+      }
+
+      function closeStaffModal() {
+        document.getElementById('staff-modal').classList.add('hidden');
+      }
+
+      function generateQrAndPreview() {
+        let targetUrl = document.getElementById('qr-input-url').value.trim();
+        if (!targetUrl) {
+          targetUrl = window.location.href;
+        }
+        const tableNum =
+          document.getElementById('qr-input-table').value.trim() ||
+          'SAKE CRAFTERS';
+
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=H&data=${encodeURIComponent(targetUrl)}`;
+
+        document.getElementById('pop-preview-qr').src = qrApiUrl;
+        document.getElementById('print-flyer-qr').src = qrApiUrl;
+        document.getElementById('print-table-badge').textContent = tableNum;
+      }
+
+      function printFlyer() {
+        generateQrAndPreview();
+        setTimeout(() => {
+          window.print();
+        }, 300);
+      }
+
+      window.onload = function () {
+        changeLanguage('ja');
+        goToHome();
+      };
+    </script>
+  </body>
+</html>
