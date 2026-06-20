@@ -613,16 +613,6 @@
                   class="pt-2 border-t border-brand-black/5 text-xs space-y-1"
                 >
                   <div class="flex justify-between">
-                    <span class="text-brand-black/40" id="res-label-style"
-                      >提供スタイル</span
-                    >
-                    <span id="res-sake-temp" class="text-brand-black font-bold"
-                      >すっきり冷酒</span
-                    >
-                  </div>
-                  <div
-                    class="flex justify-between border-t border-brand-black/5 pt-1 mt-1"
-                  >
                     <span class="text-brand-black/40" id="res-label-sakeprice"
                       >単品価格</span
                     >
@@ -663,16 +653,6 @@
                   class="pt-2 border-t border-brand-black/5 text-xs space-y-1"
                 >
                   <div class="flex justify-between">
-                    <span class="text-brand-black/40" id="res-label-genre"
-                      >味わいジャンル</span
-                    >
-                    <span id="res-food-type" class="text-brand-black font-bold"
-                      >ジューシー揚げ物</span
-                    >
-                  </div>
-                  <div
-                    class="flex justify-between border-t border-brand-black/5 pt-1 mt-1"
-                  >
                     <span class="text-brand-black/40" id="res-label-foodprice"
                       >単品通常価格</span
                     >
@@ -1142,9 +1122,7 @@
           resHeaderTag: 'SAKE CRAFTERS RECOMMENDED PAIRING',
           resDrinkBadge: '🍶 SELECTED DRINK',
           resFoodBadge: '🍛 SELECTED FOOD',
-          resLabelStyle: '提供スタイル',
           resLabelSakePrice: '単品価格',
-          resLabelGenre: '味わいジャンル',
           resLabelFoodPrice: '単品通常価格',
           resLabelFormula: 'マリアージュの調和方程式',
           resLabelCommentary: '利酒師からの解説',
@@ -1222,9 +1200,7 @@
           resHeaderTag: 'SAKE CRAFTERS RECOMMENDED PAIRING',
           resDrinkBadge: '🍶 SELECTED DRINK',
           resFoodBadge: '🍛 SELECTED FOOD',
-          resLabelStyle: 'Service Style',
           resLabelSakePrice: 'Sake Price',
-          resLabelGenre: 'Food Genre',
           resLabelFoodPrice: 'Food Price',
           resLabelFormula: 'Marriage Formula',
           resLabelCommentary: 'Sommelier Commentary',
@@ -1350,12 +1326,8 @@
         document.getElementById('res-drink-badge').textContent =
           t.resDrinkBadge;
         document.getElementById('res-food-badge').textContent = t.resFoodBadge;
-        document.getElementById('res-label-style').textContent =
-          t.resLabelStyle;
         document.getElementById('res-label-sakeprice').textContent =
           t.resLabelSakePrice;
-        document.getElementById('res-label-genre').textContent =
-          t.resLabelGenre;
         document.getElementById('res-label-foodprice').textContent =
           t.resLabelFoodPrice;
         document.getElementById('res-label-formula').textContent =
@@ -1871,14 +1843,10 @@
           document.getElementById('res-sake-name').textContent = selectedSake;
           document.getElementById('res-sake-spec').textContent =
             computedData.sakeSpec;
-          document.getElementById('res-sake-temp').textContent =
-            computedData.sakeTemp;
 
           document.getElementById('res-food-name').textContent = selectedFood;
           document.getElementById('res-food-spec').textContent =
             computedData.foodSpec;
-          document.getElementById('res-food-type').textContent =
-            computedData.foodType;
 
           document.getElementById('res-synergy').textContent =
             computedData.synergy;
@@ -2148,15 +2116,11 @@ YOU MUST output the result in the user's chosen language: [${currentLang}]. Writ
               cleanJson.sakeName;
             document.getElementById('res-sake-spec').textContent =
               cleanJson.sakeSpec;
-            document.getElementById('res-sake-temp').textContent =
-              cleanJson.sakeTemp;
 
             document.getElementById('res-food-name').textContent =
               cleanJson.foodName;
             document.getElementById('res-food-spec').textContent =
               cleanJson.foodSpec;
-            document.getElementById('res-food-type').textContent =
-              cleanJson.foodType;
 
             document.getElementById('res-synergy').textContent =
               cleanJson.synergy;
